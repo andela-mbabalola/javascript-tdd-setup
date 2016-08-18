@@ -12,8 +12,8 @@ describe('Notes creation works well', function() {
         var firstNewNote = new Note("This is a new note", "Bayo")
         var noteapp = new NotesApplication("Adebayo")
         noteapp.createNote(firstNewNote)
-        assert(firstNewNote.author == "Bayo")
-        assert(firstNewNote.content == "This is a new note")
+        assert(firstNewNote.author === "Bayo")
+        assert(firstNewNote.content === "This is a new note")
 
     });
 
@@ -33,9 +33,9 @@ describe("Notes application increments number of notes as notes are added, and f
         var noteapp = new NotesApplication("Adebayo")
         var wrongIdMessage = "You have entered a wrong ID."
         assert(noteapp.notes.length === 0)
-        noteapp.notes(firstNewNote)
-        noteapp.notes(secondNewNote)
-        noteapp.notes(thirdNewNote)
+        noteapp.notes.push(firstNewNote)
+        noteapp.notes.push(secondNewNote)
+        noteapp.notes.push(thirdNewNote)
         assert(noteapp.notes.length ===3)
     });
 
@@ -45,11 +45,11 @@ describe("Notes application increments number of notes as notes are added, and f
         var thirdNewNote = new Note("This is a new note", "Bayo")
         var noteapp = new NotesApplication("Adebayo")
         var wrongIdMessage = "You have entered a wrong ID."
-        noteapp.notes(firstNewNote)
-        noteapp.notes(secondNewNote)
-        noteapp.notes(thirdNewNote)
+        noteapp.notes.push(firstNewNote)
+        noteapp.notes.push(secondNewNote)
+        noteapp.notes.push(thirdNewNote)
         assert(noteapp.notes.length ==3)
-        assert(noteapp.get(noteapp.notes[2] !== wrongIdMessage))
+        assert(noteapp.get(noteapp.notes[2]) !== wrongIdMessage)
     });
 
     it("ensures that list of notes is returned when the list function is called", function() {
@@ -58,9 +58,9 @@ describe("Notes application increments number of notes as notes are added, and f
         var thirdNewNote = new Note("This is a new note", "Bayo")
         var noteapp = new NotesApplication("Adebayo")
         var wrongIdMessage = "You have entered a wrong ID."
-        noteapp.notes(firstNewNote)
-        noteapp.notes(secondNewNote)
-        noteapp.notes(thirdNewNote)
+        noteapp.notes.push(firstNewNote)
+        noteapp.notes.push(secondNewNote)
+        noteapp.notes.push(thirdNewNote)
         assert(noteapp.listNotes()!== [])
     });
 
@@ -83,4 +83,6 @@ describe("Delete functionality works fine", function() {
 });
 
 });
+
+
 
